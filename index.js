@@ -4,6 +4,9 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 
+// Middleware para fazer o parsing do body como JSON
+app.use(express.json());
+
 // Função para enviar uma mensagem de texto
 async function sendMessage(token, chatId, messageText) {
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -34,9 +37,6 @@ app.post('/mensagem', (req, res) => {
 
     res.send('Mensagem enviada!');
 });
-
-// Middleware para fazer o parsing do body como JSON
-app.use(express.json());
 
 // Iniciar o servidor
 app.listen(port, () => {
