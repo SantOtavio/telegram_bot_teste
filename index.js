@@ -24,19 +24,34 @@ async function sendMessage(token, chatId, messageText) {
     }
 }
 
-// Rota para enviar a mensagem via GET com a temperatura
-app.get('/mensagem/:temperatura', (req, res) => {
+// Rota para enviar a mensagem de alerta
+app.get('/mensagem/alert/:temperatura', (req, res) => {
     const token = '6053515990:AAG0G781j1g7PAYUx6t0nmJljV5RcMLSQXc';
     const chatId = '1624643673';
     const temperatura = req.params.temperatura;
-    const messageText = `TEMPERATURA: ${temperatura}`;
+    const messageText = `🚨🚨 TEMPERATURA ALTA DEMAIS! 🚨🚨 Temperatura: ${temperatura}°C`;
 
     sendMessage(token, chatId, messageText);
 
-    res.send('Mensagem enviada!');
+    res.send('Mensagem de alerta enviada!');
+});
+
+// Rota para enviar a mensagem de média
+app.get('/mensagem/media/:temperatura', (req, res) => {
+    const token = '6053515990:AAG0G781j1g7PAYUx6t0nmJljV5RcMLSQXc';
+    const chatId = '1624643673';
+    const temperatura = req.params.temperatura;
+    const messageText = `ℹ️ Média das últimas 10 temperaturas: ${temperatura}°C`;
+
+    sendMessage(token, chatId, messageText);
+
+    res.send('Mensagem de média enviada!');
 });
 
 // Iniciar o servidor
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
+
+
+
