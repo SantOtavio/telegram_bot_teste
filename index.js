@@ -41,7 +41,7 @@ app.get('/mensagem/media/:temperatura', (req, res) => {
     const token = '6053515990:AAG0G781j1g7PAYUx6t0nmJljV5RcMLSQXc';
     const chatId = '1624643673';
     const temperatura = req.params.temperatura;
-    const messageText = `ℹ️ Média das últimas 10 temperaturas: ${temperatura}°C`;
+    const messageText = `ℹ️ A temperatura pode estar instável: ${temperatura}°C`;
 
     sendMessage(token, chatId, messageText);
 
