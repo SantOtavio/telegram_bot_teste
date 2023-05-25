@@ -4,9 +4,6 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 
-// Middleware para fazer o parsing do body como JSON
-app.use(express.json());
-
 // Função para enviar uma mensagem de texto
 async function sendMessage(token, chatId, messageText) {
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -27,11 +24,12 @@ async function sendMessage(token, chatId, messageText) {
     }
 }
 
-// Rota para enviar a mensagem via POST
-app.post('/mensagem', (req, res) => {
-    const token = '6053515990:AAG0G781j1g7PAYUx6t0nmJljV5RcMLSQXc';
-    const chatId = '1624643673';
-    const messageText = req.body.message;
+// Rota para enviar a mensagem via GET com a temperatura
+app.get('/mensagem/:temperatura', (req, res) => {
+    const token = 'seu_token';
+    const chatId = 'seu_chat_id';
+    const temperatura = req.params.temperatura;
+    const messageText = `TEMPERATURA: ${temperatura}`;
 
     sendMessage(token, chatId, messageText);
 
