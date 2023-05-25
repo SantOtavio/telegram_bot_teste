@@ -26,8 +26,8 @@ async function sendMessage(token, chatId, messageText) {
 
 // Rota para enviar a mensagem via GET com a temperatura
 app.get('/mensagem/:temperatura', (req, res) => {
-    const token = 'seu_token';
-    const chatId = 'seu_chat_id';
+    const token = '6053515990:AAG0G781j1g7PAYUx6t0nmJljV5RcMLSQXc';
+    const chatId = '1624643673';
     const temperatura = req.params.temperatura;
     const messageText = `TEMPERATURA: ${temperatura}`;
 
