@@ -24,16 +24,19 @@ async function sendMessage(token, chatId, messageText) {
     }
 }
 
-// Rota para enviar a mensagem
-app.get('/mensagem', (req, res) => {
+// Rota para enviar a mensagem via POST
+app.post('/mensagem', (req, res) => {
     const token = '6053515990:AAG0G781j1g7PAYUx6t0nmJljV5RcMLSQXc';
     const chatId = '1624643673';
-    const messageText = 'Temperatura: teste';
+    const messageText = req.body.message;
 
     sendMessage(token, chatId, messageText);
 
     res.send('Mensagem enviada!');
 });
+
+// Middleware para fazer o parsing do body como JSON
+app.use(express.json());
 
 // Iniciar o servidor
 app.listen(port, () => {
